@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2134661760377645786}
   - component: {fileID: -818741003116879877}
   - component: {fileID: 5173021639580938779}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ruby
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,9 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d17584f683f1a45b8a0819a0a8f552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 1
   timeInvincible: 2
   maxHealth: 5
+  projectilePrefab: {fileID: 2530372193142512741, guid: 9047a00038961af44bbf137598fd8972, type: 3}
 --- !u!50 &2134661760377645786
 Rigidbody2D:
   serializedVersion: 4
@@ -135,7 +136,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.017396912, y: 0.12306309}
+  m_Offset: {x: -0.017396912, y: 0.24039936}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -146,7 +147,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.31074324, y: 0.24612617}
+  m_Size: {x: 0.31074324, y: 0.48079872}
   m_EdgeRadius: 0
 --- !u!95 &5173021639580938779
 Animator:

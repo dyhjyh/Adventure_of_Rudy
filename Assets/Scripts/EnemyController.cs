@@ -7,13 +7,16 @@ public class EnemyController : MonoBehaviour
 {
     public float speed = 3.0f;
     public bool vertical;
+    public ParticleSystem smokeEffect;
     
     private Rigidbody2D rigidbody2d;
     private Animator animator;
     
     private int direction = 1;
-    public float changeTime = 5.0f;
+    public float changeTime = 3.0f;
     private float timer;
+
+    private bool broken = true;
 
     void Start()
     {
@@ -24,6 +27,11 @@ public class EnemyController : MonoBehaviour
     
     void Update()
     {
+        if (!broken)
+        {
+            return;
+        }
+        
         timer -= Time.deltaTime;
 
         if (timer <= 0)
@@ -35,6 +43,11 @@ public class EnemyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!broken)
+        {
+            return;
+        }
+        
         Vector2 position = rigidbody2d.position;
         if (vertical)
         {
@@ -59,5 +72,13 @@ public class EnemyController : MonoBehaviour
         {
             controller.ChangeHealth(-1);
         }
+    }
+
+    public void Fix()
+    {
+        broken = false;
+        rigidbody2d.simulated = false;
+        animator.SetTrigger("Fixed");
+        smokeEffect.Stop();
     }
 }

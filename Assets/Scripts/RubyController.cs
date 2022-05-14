@@ -22,6 +22,8 @@ public class RubyController : MonoBehaviour
     
     private float horizontal;
     private float vertical;
+
+    public GameObject projectilePrefab;
     
     // Start is called before the first frame update
     void Start() // Unity 仅在游戏开始时执行一次 Start 中的代码。
@@ -59,6 +61,11 @@ public class RubyController : MonoBehaviour
                 isInvincible = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            Launch();
+        }
     }
 
     void FixedUpdate()
@@ -84,5 +91,15 @@ public class RubyController : MonoBehaviour
         }
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);  //钳制功能使当前生命值在0和最大生命值之间
         Debug.Log(currentHealth + "/" + maxHealth);
+    }
+
+    void Launch()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(lookDirection, 3000);
+        
+        animator.SetTrigger("Launch");
     }
 }
